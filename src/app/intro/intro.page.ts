@@ -18,26 +18,26 @@ export class IntroPage implements OnInit {
 
   slides = [
     {
-      title: "Title 1",
-      desc: "sdasdfsd",
-      subtitle: "subtitle 1",
-      img: "https://www.zooplus.es/magazine/wp-content/uploads/2022/05/Cuanto-pesa-un-gato-2.jpeg",
-      description: "Lorem Ipsum  and typesetting industry."
+      img:"https://cdn-icons-png.flaticon.com/512/2038/2038116.png",
+      title:"Tu Biblioteca virtual",
+      subtitle:"Disfruta de tus libros favoritos"
     },
     {
-      title: "Title 2",
-      desc: "",
-      subtitle: "subtitle 2",
-      img: "assets/logo.png",
-      description: "Lorem Ipsum is simply dummy text of the printing ."
+      img:"https://cdn-icons-png.flaticon.com/512/2888/2888432.png",
+      title:"Busca nuevos Libros",
+      subtitle:"Explora y encuentras nuevos libros para aprender y leer"
     },
     {
-      title: "Title 3",
-      desc: null,
-      subtitle: "subtitle 3",
-      img: "https://www.zooplus.es/magazine/wp-content/uploads/2022/05/Cuanto-pesa-un-gato-2.jpeg",
-      description: "simply dummy text of the printing and typesetting industry."
+      img:"https://cdn-icons-png.flaticon.com/512/3574/3574729.png",
+      title:"Lee donde quieras sin interrucion",
+      subtitle:"Descarga todos tus libros favoritos y lee los donde tu quieras"
+    },
+    {
+      img:"https://cdn-icons-png.flaticon.com/512/5736/5736758.png",
+      title:"Audio Libros",
+      subtitle:"Encuentra los mejores audio libros"
     }
+
   ]
 
   constructor(private router: Router, private storage: Storage) { 
