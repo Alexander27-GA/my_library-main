@@ -9,13 +9,12 @@ import { LibraryService } from '../services/library.service';
   styleUrls: ['./books.page.scss'],
 })
 export class BooksPage implements OnInit {
-
+  
   books: any;
 
   constructor(
     private libraryService: LibraryService,
-    private modalController: ModalController
-    ) { }
+    private modalController: ModalController) { }
 
   ngOnInit() {
     this.libraryService.getBooks().then(books => {

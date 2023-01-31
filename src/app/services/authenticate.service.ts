@@ -2,35 +2,41 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const urlServer = "https://librarypca.fly.dev/";
+const httpHeaders = { headers: new HttpHeaders({"Content-Type": "application/json"}) };
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
-
-  urlServer = "https://librarypca.fly.dev/";
-  httpHeaders = { headers: new HttpHeaders({"Content-Type": "application/json"}) };
-
+  [x: string]: any;
+  urlServer = "https:/Librarypca.fly.dev/";
+  httpHeaders = { headers: new HttpHeaders({'content-Type': 'application/json'})};
   constructor(
-    private storage: Storage,
+    private storage: Storage, 
     private http: HttpClient
     ) { }
-
-  loginUserLocal(credentials: any){
-    return new Promise((accept, reject) =>{
-      if ( credentials.email == "andrea@gmail.com" && credentials.password == "123456" )
-      {
-        accept("Login Exitoso");
-      } else {
-        reject("Login Fallido");
-      }
+  loginUserLocal(credentials: any) {
+    return new Promise((accept, reject) => {
+      const user = this.getRegisterUSer();
+      user.then(u => {
+        if (u.password == btoa(credentials.password)) {
+          accept("Login Exitoso");
+        } else {
+          reject("Login Fallido");
+        }
+      })
+      
     });
   }
-
   registerUserLocal(userData: any){
     userData.password = btoa(userData.password);
     return this.storage.set("user", userData);
   }
-
+  getRegisterUSer(){
+    return this.storage.get("user");
+  }
+  
   loginUser(credentials: any){
     return new Promise( (accept, reject) => {
       let params = {

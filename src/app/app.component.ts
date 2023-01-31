@@ -12,3 +12,4 @@ export class AppComponent {
     await this.storage.create();
   }
 }
+

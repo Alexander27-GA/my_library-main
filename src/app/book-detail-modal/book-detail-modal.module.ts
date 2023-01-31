@@ -18,3 +18,4 @@ import { BookDetailModalPage } from './book-detail-modal.page';
   declarations: [BookDetailModalPage]
 })
 export class BookDetailModalPageModule {}
+
