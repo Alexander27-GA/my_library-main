@@ -17,7 +17,7 @@ export class BookDetailModalPage implements OnInit {
     private modalController: ModalController,
     private storage: Storage,
     private libraryService: LibraryService
-     ) { }
+    ) { }
 
   async ngOnInit() {
     this.book = this.navParams.get("book");

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { AlertController } from '@ionic/angular';
@@ -12,29 +12,85 @@ import { AlertController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
+  validation_message = {
+    name: [
+      { type: "required", message: "Obligatorio" },
 
-  constructor(private navCtrl: NavController, 
+    ],
+    last_name: [
+      { type: "required", message: "Obligatorio" },
+
+    ],
+    document_type: [
+      { type: "required", message: "Obligatorio" },
+    ],
+    document_number: [
+      { type: "required", message: "Obligatorio" },
+    ],
+    career: [
+      { type: "required", message: "Obligatorio" },
+    ],
+    email: [
+      { type: "required", message: "El Email es Obligatorio" },
+      { type: "pattern", message: "Tu Email no es valido" }
+    ],
+    password: [
+      { type: "required", message: "La contraseña es Obligatoria" }
+    ]
+
+  }
+
+  errorMessage: any;
+
+
+  constructor(private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private authenticate: AuthenticateService,
-    private alertController: AlertController
-    ) { 
-
+    private alertController: AlertController) {
+    
     this.registerForm = this.formBuilder.group({
-      name: new FormControl(),
-      last_name: new FormControl(),
-      document_type: new FormControl(),
-      document_number: new FormControl(),
-      career: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(
-      )
+      name: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          Validators.pattern("^[a-zA-Z0-9 ]{50}$")]
+        )),
+      last_name: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          Validators.pattern("^[a-zA-Z0-9 ]{50}$")]
+        )),
+      document_type: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          ]
+        )),
+      document_number: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          ]
+        )),
+      career: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          ]
+        )),
+      email: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          ]
+        )),
+      password: new FormControl("",
+        Validators.compose(
+          [Validators.required,
+          ]
+        ))
     });
   }
 
   ngOnInit() {
   }
 
-  goToLogin(){
+  goToLogin() {
     this.navCtrl.navigateBack("/login");
   }
 
@@ -58,5 +114,4 @@ export class RegisterPage implements OnInit {
     );
     await alert.present();
   }
-
 }

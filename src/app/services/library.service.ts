@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LibraryService {
+  likeAuthors: any;
+  authors: any;
 
   urlServer = "https://librarypca.fly.dev/";
   httpHeaders = { headers: new HttpHeaders({"Content-Type": "application/json"}) };
@@ -60,6 +62,15 @@ export class LibraryService {
       }
     }
     return this.http.post(`${this.urlServer}dislike`, params, this.httpHeaders)
+  }
+  getAuthorDatabyName(author_name:any){
+    return fetch(`https://openlibrary.org/search/authors.json?q=${author_name}`).then(
+      author => author.json()
+    )
+
+  }
+  GetListTopBooks(){
+    return fetch(`https://librarypca.fly.dev/top_books`).then(list => list.json())
   }
 
 }
